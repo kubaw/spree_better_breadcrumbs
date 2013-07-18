@@ -23,7 +23,7 @@ module Spree::BaseHelper
 			crumbs << content_tag(:li, link_to(content_tag(:span, t('products') , :itemprop => "title"), products_path) + sep,  :item_type => "http://data-vocabulary/Breadcrumbs", :itemscope => "itemscope")
 			crumbs << content_tag(:li, content_tag(:span, product.name, :itemprop => "title"),  :item_type => "http://data-vocabulary.org/Breadcrumbs", :itemscope => "itemscope")
 		else
-			crumbs << content_tag(:li, content_tag(:span, t('products'), :itemprop => "title"),  :item_type => "http://data-vocabulary.org.org/Breadcrumbs", :itemscope => "itemscope")
+			crumbs << content_tag(:li, content_tag(:span, t('products'), :itemprop => "title"),  :item_type => "http://data-vocabulary.org/Breadcrumbs", :itemscope => "itemscope")
 		end
 		crumb_list = content_tag(:ul, raw(crumbs.flatten.map{|li| li.mb_chars}.join), :class => 'inline')
 		content_tag(:div, crumb_list, :id => 'breadcrumbs')
