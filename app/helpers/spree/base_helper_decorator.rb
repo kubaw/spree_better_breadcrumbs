@@ -15,13 +15,13 @@ module Spree::BaseHelper
 			crumbs << taxon.ancestors.collect { |ancestor| content_tag(:li, link_to(content_tag(:span, ancestor.name, :itemprop => "title"), seo_url(ancestor), :itemprop => "url") + sep, :itemscope => "itemscope", :itemtype => "http://data-vocabulary.org/Breadcrumb") } unless taxon.ancestors.empty?
 			if product
 				crumbs << content_tag(:li, link_to(content_tag(:span, taxon.name, :itemprop => "title"), seo_url(taxon), :itemprop => "url") + sep,  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
-				crumbs << content_tag(:li, content_tag(:span, product.name, :itemprop => "title"),  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
+				crumbs << content_tag(:li, content_tag(:span, accurate_title, :itemprop => "title"),  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
 			else
 				crumbs << content_tag(:li, content_tag(:span, taxon.name, :itemprop => "title"),  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
 			end
 		elsif product
 			crumbs << content_tag(:li, link_to(content_tag(:span, t('products') , :itemprop => "title"), products_path, :itemprop => "url") + sep,  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
-			crumbs << content_tag(:li, content_tag(:span, product.name, :itemprop => "title"),  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
+			crumbs << content_tag(:li, content_tag(:span, accurate_title, :itemprop => "title"),  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
 		else
 			crumbs << content_tag(:li, content_tag(:span, t('products'), :itemprop => "title"),  :itemtype => "http://data-vocabulary.org/Breadcrumb", :itemscope => "itemscope")
 		end
